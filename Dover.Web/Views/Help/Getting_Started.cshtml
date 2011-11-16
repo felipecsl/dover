@@ -1,0 +1,150 @@
+﻿@using Microsoft.Web.Mvc;
+@{ 
+	View.Title = "Dover - Iniciando com o Dover"; 
+	Layout = "~/Views/Shared/Help.cshtml"; 
+}
+
+<div id="feature">
+	<div class="wrapper">
+		<h2>
+			Iniciando com o Dover</h2>
+		<p>
+			O Dover é uma aplicação web de gerenciamento de conteúdo. Com ele, você pode manter dados tabulares e utilizá-los para integração em outros sistemas.</p>
+		<p>
+			Neste guia, iremos ver:</p>
+		<ul>
+			<li>Em que casos é bom usar o Dover.</li>
+			<li>Para quem o Dover é melhor.</li>
+			<li>O que o Dover tem de diferente.</li>
+			<li>Como começar agora mesmo.</li>
+		</ul>
+		<div id="subCol">
+			<h3 class="chapter">@Html.Image("~/Content/Images/Help/chapters_icon.gif")Cap&iacute;tulos</h3>
+			<ol class="chapters">
+				<li><a href="#quandousaro-maileeme">Quando usar o Dover</a><ul>
+					<li><a href="#newslettersnotciasounovidadesporemail">Newsletters, notícias ou novidades
+						por email</a></li><li><a href="#promoesecampanhasporemail">Promoções e campanhas por
+							email</a></li><li><a href="#oquemaisvocinventar">O que mais você inventar</a></li></ul>
+				</li>
+				<li><a href="#quandonousaro-maileeme">Quando não usar o Dover</a><ul>
+					<li><a href="#prospeconovoscontatosetc">Prospecção, novos contatos, etc</a></li></ul>
+				</li>
+				<li><a href="#oqueo-maileemetemdediferente">O que o Dover tem de diferente</a><ul>
+					<li><a href="#criadordetemplates">Criador de templates</a></li><li><a href="#geolocalizao">
+						Geolocalização</a></li><li><a href="#integraocomredessociais">Integração com redes sociais</a></li><li>
+							<a href="#atualizaesfrequentes">Atualizações frequentes</a></li><li><a href="#suportetcnicoincansvel">
+								Suporte técnico incansável</a></li></ul>
+				</li>
+				<li><a href="#comocomearagoramesmo">Como começar agora mesmo</a><ul>
+				</ul>
+				</li>
+			</ol>
+		</div>
+	</div>
+</div>
+<div id="container">
+	<div class="wrapper">
+		<div id="mainCol">
+			<h3 id="quandousaro-maileeme">
+				1 Quando usar o Dover</h3>
+			<h4 id="alimentacaodedadosparasites">
+				1.1 Alimentação de dados para sites</h4>
+			<p>
+				O Dover é ideal para servir como gerenciador de conteúdo para sites dinâmicos.</p>
+			<p>
+				Com ele, você cria módulos para suas seções atualizáveis e o administrador utiliza 
+				o Dover para atualizar o seu site.</p>
+			<h4 id="modelagemdedadostabulares">
+				1.2 Modelagem de dados tabulares</h4>
+			<p>
+				Com o Dover, você pode montar 'tabelas' de dados arbitrários de acordo 
+				com a sua necessidade. Estas tabelas são chamadas de módulos.</p>
+			<p>
+				Você pode selecionar quais as informações pertencem ao seu módulo
+				e como elas se parecem, sejam elas textos, fotos ou documentos.</p>
+			<h4 id="oquemaisvocinventar">
+				1.3 Integração com outros sistemas</h4>
+			<p>
+				Com uma API completa, você pode integrar facilmente seus dados no Dover
+				com outros sistemas, criando ainda mais novas possibilidades.</p>
+			<div class='warning'>
+				<p>
+					Em todos os casos acima, só recomendamos o envio de mensagens <strong>solicitadas ativamente</strong>
+					pelas pessoas. Além das questões legais envolvendo <span class="caps">SPAM</span>,
+					campanhas para contatos que não solicitaram recebê-las <strong>não valem o investimento</strong>
+					realizado, por menor que seja. Seus resultados são piores e a sua reputação fica
+					comprometida.</p>
+			</div>
+			<h3 id="quandonousaro-maileeme">
+				2 Quando não usar o Dover</h3>
+			<h4 id="prospeconovoscontatosetc">
+				2.1 Prospecção, novos contatos, etc</h4>
+			<p>
+				O Dover, assim como o email em geral, <strong>não é feito para prospecção</strong>
+				ou novos contatos. Ao entrar em contato com uma pessoa que não solicitou seu email,
+				você a está desrespeitando e interrompendo. E relações que iniciam assim não costumam
+				gerar bons frutos para nenhum dos lados.</p>
+			<p>
+				Para saber mais sobre o marketing do respeito, leia o <a href="http://blog.Dover/tag/respeito">
+					nosso blog</a>.</p>
+			<div class='info'>
+				<p>
+					Apesar de o Dover não ser feito para prospecções, não significa que você não
+					possa utilizá-lo junto com outras formas de realizar novos contatos. Criar uma campanha
+					no seu Twitter solicitando assinaturas para a sua newsletter, por exemplo, é uma
+					maneira de utilizar o Dover para desenvolver a relação, e outros meios mais
+					adequados para iniciá-la.</p>
+			</div>
+			<h3 id="oqueo-maileemetemdediferente">
+				3 O que o Dover tem de diferente</h3>
+			<p>
+				O Dover é um serviço web de email marketing, e existem muitas opções de serviços
+				equivalentes. Queremos que você fique conosco apenas se nosso serviço for melhor
+				do que os outros para você.</p>
+			<p>
+				Acreditamos que a melhor maneira de você saber isto é <a href="http://Dover">testando</a>.
+				Mas, ainda assim, podemos elencar algumas coisas que temos de diferente.</p>
+			<h4 id="criadordetemplates">
+				3.1 Criador de templates</h4>
+			<p>
+				Somos os únicos no Brasil a possuir um criador de templates que permite que você
+				crie emails profissionais sem saber nada de <span class="caps">HTML</span>.</p>
+			<p>
+				Ao mesmo tempo, caso você seja designer, você pode <a href="templates_creating.html">
+					criar seus templates</a> em <span class="caps">HTML</span> como quiser e só
+				dizer quais campos são editáveis. Depois, seus clientes editam a mensagem e seu
+				design permanece intacto.</p>
+			<h4 id="geolocalizao">
+				3.2 Geolocalização</h4>
+			<p>
+				Nossos relatórios incluem informações de localização dos contatos na hora em que
+				eles acessaram suas mensagens. A partir dessas informações, você pode até criar
+				campanhas segmentadas por região no mapa.</p>
+			<h4 id="integraocomredessociais">
+				3.3 Integração com redes sociais</h4>
+			<p>
+				Temos um foco em integração com redes sociais e no Dover você pode até enviar
+				campanhas baseado no total de seguidores que seus contatos têm no Twitter, entre
+				outras coisas.</p>
+			<h4 id="atualizaesfrequentes">
+				3.4 Atualizações frequentes</h4>
+			<p>
+				Estamos sempre melhorando o Dover. Para alguns clientes, é até perturbadora
+				a quantidade de mudanças. Se você não gosta de mudanças, talvez seja melhor escolher
+				outro serviço. Mas se você gosta de aprender coisas novas, achamos que deve ficar
+				conosco.</p>
+			<h4 id="suportetcnicoincansvel">
+				3.5 Suporte técnico incansável</h4>
+			<p>
+				Nós possuímos uma equipe de suporte pequena mas matadora. As mesmas pessoas que
+				criam a aplicação solucionam os chamados. <a href="mailto:suporte@Dover">Entre em
+					contato</a> e você vai conversar com uma pessoa pensante e que não vai descansar
+				enquanto não resolver qualquer desafio.</p>
+			<h3 id="comocomearagoramesmo">
+				4 Como começar agora mesmo</h3>
+			<p>
+				Basta se cadastrar e sair usando! <a href="http://Dover/cadastro.html">Crie sua
+					conta</a> agora mesmo. Sem compromisso.</p>
+		</div>
+	</div>
+</div>

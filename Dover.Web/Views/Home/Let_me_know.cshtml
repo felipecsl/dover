@@ -1,0 +1,70 @@
+﻿@model dynamic
+@using Microsoft.Web.Mvc;
+@using Br.Com.Quavio.Tools.Web.Mvc;
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Dover - Uma plataforma completa para gestão de conteúdo na web.</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="O Dover é uma plataforma completa para gestão de conteúdo na web." />
+	<meta name="keywords" content="cms, content management system, dover, api, data, backend, website" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+	@Html.Css("~/Content/LetMeKnow.css")
+	@Html.Script("~/Scripts/utilities/utils.js")
+	@(new HtmlString(Html.FavIcon("~/Content/Images/favicon.png")))
+</head>
+<body>
+	<script>
+		$(function () {
+			$("#email").focus(function () {
+				if ($(this).val() == "Seu e-mail") {
+					$(this).val("");
+				}
+			});
+			$("#email").blur(function () {
+				if ($(this).val() == "") {
+					$(this).val("Seu e-mail");
+				}
+			});
+
+			$("#theform").submit(function () {
+				var email = $("#email").val();
+				if (!email || email == "Seu e-mail") {
+					alert("Por favor, digite o seu e-mail.");
+					return false;
+				}
+				if (!Utils.isValidEmail(email)) {
+					alert("Por favor, digite um endereço de e-mail válido.");
+					return false;
+				}
+			});
+		});
+	</script>
+   	<div class="body ctr">
+		@Html.Image("~/Content/Images/Public/logo.png")
+		@if(Model == null) {
+			<h1>Uma plataforma completa para gestão de conteúdo na web.</h1>
+			<h2>
+				O Dover é um CMS como serviço, 
+				com interface amigável e de fácil integração com sistemas novos e já existentes.
+			</h2>
+			<h3>Quer ser avisado quando o serviço estiver no ar?</h3>
+			<form action="" method="post" id="theform">
+				<input type="text" value="Seu e-mail" id="email" name="email" />
+				<input type="submit" value="Me avise!" />
+			</form>
+		}
+		else {
+			if(Model.Success) {
+				<h1>Obrigado. Você será notificado assim que o serviço estiver no ar.</h1>
+			}
+			else {
+				<h1>Ocorreu um problema ao efetuar o seu cadastro. Por favor, notifique o erro à pessoa que lhe indicou o sistema.</h1>
+			}
+		}
+	</div>
+</body>
+</html>

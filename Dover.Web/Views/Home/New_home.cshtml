@@ -1,0 +1,50 @@
+﻿@inherits System.Web.Mvc.WebViewPage<dynamic>
+@using Microsoft.Web.Mvc;
+@using Br.Com.Quavio.Tools.Web.Mvc;
+
+@{
+    View.Title = "Dover - Uma plataforma completa para gestão de conteúdo na web.";
+    Layout = "~/Views/Shared/PublicSiteMaster.cshtml";
+}
+<div class="maintop">
+	<div class="slogan fl">
+		<p>Uma plataforma completa para 		gestão de conteúdo na web.</p>
+		<span>
+			O Dover é um CMS como serviço, 
+			com interface amigável e de fácil integração com sites novos e já existentes.
+		</span>
+		<a href="#" class="tdn">Crie sua conta</a>
+	</div>
+	<div class="video fr">
+		<object width="540" height="305"><param name="allowfullscreen" value="true" />
+			<param name="allowscriptaccess" value="always" />
+			<param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id=9056286&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1&amp;autoplay=0&amp;loop=0&amp;wmode=transparent" />
+			<embed src="http://vimeo.com/moogaloop.swf?clip_id=9056286&amp;server=vimeo.com&amp;show_title=1&amp;show_byline=1&amp;show_portrait=0&amp;color=&amp;fullscreen=1&amp;autoplay=0&amp;loop=0" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" width="540" height="305"></embed>
+		</object>
+	</div>
+</div>
+<div class="maincenter">
+	<div class="box fl">
+		@Html.Image("~/Content/Images/Public/annotations.png", new { Class = "fl blk" })
+		<div class="fl">
+			<h2 class="fwn">Fácil de usar</h2>
+			<p>O Dover possui uma interface simples, ótima usabilidade e fácil acesso à informação.
+			</p>
+		</div>
+	</div>
+	<div class="box fl">
+		@Html.Image("~/Content/Images/Public/screen.png", new { Class = "fl blk" })
+		<div class="fl">
+			<h2 class="fwn">Sem instalação</h2>
+			<p>Usuários têm acesso constante à ultima versão, porque as atualizações, upgrades e melhorias são disponibilizados automaticamente.
+			</p>
+		</div>
+	</div>
+	<div class="box fl">
+		@Html.Image("~/Content/Images/Public/box.png", new { Class = "fl blk" })
+		<div class="fl">
+			<h2 class="fwn">Integração rápida</h2>
+			<p>Utilize nossa API e e integre seu sistema facilmente utilizando XML ou JSON.</p>
+		</div>
+	</div>
+</div>

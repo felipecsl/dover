@@ -1,0 +1,57 @@
+﻿/* from http://meyerweb.com/eric/tools/css/reset/ *//* v1.0 | 20080212 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, 
+abbr, acronym, address, big, cite, code,del, 
+dfn, em, font, img, ins, kbd, q, s, samp,small, 
+strike, strong, sub, sup, tt, var,b, u, i, 
+center,dl, dt, dd, ol, ul, li,fieldset, form, 
+label, legend,table, caption, tbody, tfoot, 
+thead, tr, th, td {	margin: 0;	padding: 0;	border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+body { line-height: 1;}
+ol, ul { list-style: none;}
+blockquote, q {	quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {	content: ''; content: none;}
+/* remember to define focus styles! */:focus { outline: 0;}
+/* remember to highlight inserts somehow! */ins { text-decoration: none;}
+del { text-decoration: line-through;}
+/* tables still need 'cellspacing="0"' in the markup */table { border-collapse: collapse; border-spacing: 0;}
+strong { font-weight: bold; }
+address {font-style: italic;}
+pre {font-family: Courier New;}
+.bb { border: 1px solid #000; }
+.bw { border: 1px solid #fff; }
+.fl { float: left; }
+.fr { float: right; }
+.clr { clear: both; }
+.blk { display: block; }
+.inl { display: inline; }
+.uc { text-transform: uppercase; }
+.fwn { font-weight: normal; }
+.b { font-weight: bold; }
+.i { font-style: italic; }
+.u { text-decoration: underline; }
+.tdn { text-decoration: none; }
+.tac { text-align: center; }
+.tar { text-align: right; }
+.ctr { margin-left: auto; margin-right: auto; }
+.r { color: #f00; }
+.g { color: #0f0; }
+.b { color: #00f; }
+.w { color: #fff; }
+.oa { overflow: auto; }
+.oh { overflow: hidden; }
+
+@font-face { font-family: Sansation; src: url(Fonts/Sansation_Regular.ttf); }
+
+body { background: #f1f1f1 url(Images/Public/bg_simple.png) repeat-x; font-family: Tahoma; font-size:10px; font-family:Sansation, Tahoma; }
+.body { width: 950px; padding-top: 50px; color: #ddd; }
+.body h1 { font-size:50px; font-weight:normal; line-height:60px; margin:40px 0; text-shadow:0 1px 1px #000; }
+.body h2 {font-size:25px; font-weight:normal; line-height:30px; text-shadow:0 1px 1px #000; }
+.body h3 { color:#000; font-size:20px; margin:40px 0 10px; text-align:center; text-shadow:1px 1px 1px #ccc; font-family:Tahoma; font-weight:normal; }
+.body form { display:block; margin:0 auto; width:435px; position: relative;}
+.body form input { display: block; }
+.body form input[type=text] { -moz-border-radius:4px; border-radius:4px; -webkit-border-radius:4px; -moz-box-shadow:0 0 8px #000; box-shadow:0 0 8px #000; -webkit-box-shadow:0 0 8px #000000; background-color:#999999; border:5px solid #EEEEEE; color:#000000; float:left; font-family:Arial; font-size:17px; font-weight:bold; height:28px; padding:3px 5px; width:413px; text-shadow:0 1px 1px #ccc; line-height:28px; }
+.body form input[type=submit] { -moz-box-shadow:0 0 3px 0 black; -webkit-box-shadow:0 0 3px 0 black; box-shadow:0 0 3px 0 black; background-image:-moz-linear-gradient(center bottom , #D77410 0%, #FFBD7A 100%); border:1px solid #DBAE64; color:#000000; font-family:Tahoma; font-size:17px; right:10px; padding:2px 10px; position:absolute; text-shadow:0 1px 0 #CCCCCC; top:8px; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, rgb(215,116,16)), color-stop(1, rgb(255,189,122))); cursor: pointer; filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFBD7A', endColorstr='#D77410',GradientType=0 ); /* ie */ }
+
+/* WEBKIT ONLY */
+@media screen and (-webkit-min-device-pixel-ratio:0) { Body {} .body form input[type=submit] { top: 7px; right: 9px; } }

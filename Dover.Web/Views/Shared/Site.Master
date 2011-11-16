@@ -1,0 +1,78 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+	<meta charset="utf-8">
+	<meta name="description" content=">Uma plataforma completa para gestão de conteúdo na web." />
+	<% Html.RenderPartial("MasterHeadIncludes"); %>
+    <asp:ContentPlaceHolder runat="server" ID="HeadArea" />
+</head>
+<body>
+<% 
+var currUser = Membership.GetUser();
+var acctName = ViewContext.RouteData.Values["account"] as string;
+var repo = new Com.Dover.Modules.ModuleRepository();
+%>
+    <div id="wrap">
+        <div class="header" id="header">
+            <div class="header-top">
+				<a href="<%= Html.GetDashboardUrl() %>" class="fl btnhome">Home</a>
+		<%	if (currUser != null) { %>
+				<div class="top-dropdown fl">
+					<span>Minhas Contas</span>
+					<ul>
+				<%	foreach (var acc in repo.GetUserAccounts().OrderBy(a => a.Name)) { %>
+						<li><a href="<%= Html.GetAccountUrl(acc.SubdomainName) %>" ><%= acc.Name %></a></li>
+				<%	} %>
+					</ul>
+				</div>
+		<%	} %>
+				<%= Html.ActionLink<Com.Dover.Controllers.HomeController>(c => c.Help(), "Ajuda", new { Class = "fr button help" })%>
+				<%= Html.ActionLink<Com.Dover.Controllers.AccountController>(c => c.LogOff(), "Sair", new { Class = "fr button" })%>
+		<%	if (currUser != null) { %>
+				<%= Html.ActionLink<Com.Dover.Controllers.AccountController>(c => c.Edit(currUser.UserName), "Meus dados", new { Class = "fr button" })%>
+				<span class="fr button username"><%= new Com.Dover.Profile.UserProfileManager(currUser).GetUserProfileProperty("Name")%></span>
+		<%	} %>
+			</div>
+			<%= Html.ActionImageLink("~/Content/Images/newlayout/logo.png", new { controller = "Home", action = "Index" }, new { Class = "logo block" })%>
+		
+		    <div id="message-wrapper">
+				<div class="body" id="msg-body"></div>
+		    </div>
+        </div>
+<%	if (Roles.IsUserInRole("sysadmin") || Roles.IsUserInRole("administrators")) { %>
+		<div class="local-menu">
+	<%	if (String.IsNullOrWhiteSpace(acctName)) { %> 
+			<%= Html.ActionLink("Nova conta", "CreateAccount", new { controller = "Account" })%>
+	<%	}
+	else { %>
+			<%= Html.ActionLink<Com.Dover.Controllers.AccountController>(c => c.EditAccount(acctName), "Editar esta conta")%>
+			<%= Html.ActionLink<Com.Dover.Controllers.ModulesController>(c => c.Create(), "Novo módulo")%>
+	<%	} if (ViewContext.RouteData.Values["controller"].ToString() == "DynamicModule") { %>
+			<%= Html.ActionLink<Com.Dover.Controllers.ModulesController>(c => c.Edit(Int32.Parse(ViewContext.RouteData.Values["moduleid"].ToString())), "Editar este módulo")%>
+			<% using (Html.BeginForm<Com.Dover.Controllers.ModulesController>(c => c.Delete(0))) { %>
+				<%= Html.Hidden("ID", ViewContext.RouteData.Values["moduleid"].ToString())%>
+				<%= Html.SubmitButton("Delete", "Remover este módulo", new { title = "Apagar este módulo", Class = "confirmable", confirmationmsg = "Tem certeza que deseja apagar este módulo?\nNota: Todos os dados serão apagados!" }) %>
+			<% } %>
+	<%	} %>
+		</div>
+<%	} %>
+        <div class="body clear" id="main">
+	        <% Html.RenderPartial("Menu"); %>
+			<div class="pagecontent">
+				<% Html.RenderPartial("Breadcrumb"); %>
+				<asp:ContentPlaceHolder ID="MainContent" runat="server" />
+			</div>
+        </div>
+    </div>
+    <div class="footer" id="footer">
+        <%= Html.Image("~/Content/Images/newlayout/logo_footer.png", new { Class = "fl logofooter" })%>
+		<span class="fl">Versão <%= Com.Dover.DoverApplication.Dover_Build_Major_Version %>.<%= Com.Dover.DoverApplication.Dover_Build_Minor_Version %></span>
+        <div class="footer-content">
+            <a href="http://www.quavio.com.br/" target="_blank" class="quavio-logo"><%= Html.Image("~/Content/Images/img_quavio.png")%></a>
+        </div>
+    </div>
+</body>
+</html>

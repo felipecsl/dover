@@ -1,0 +1,934 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="uacModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="uacModelStoreContainer">
+          <EntitySet Name="Account" EntityType="uacModel.Store.Account" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Account_User" EntityType="uacModel.Store.Account_User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="aspnet_Users" EntityType="uacModel.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Cell" EntityType="uacModel.Store.Cell" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Field" EntityType="uacModel.Store.Field" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FieldDataType" EntityType="uacModel.Store.FieldDataType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FieldMetadata" EntityType="uacModel.Store.FieldMetadata" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Module" EntityType="uacModel.Store.Module" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Payment" EntityType="uacModel.Store.Payment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Plan" EntityType="uacModel.Store.Plan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Row" EntityType="uacModel.Store.Row" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsageCounter" EntityType="uacModel.Store.UsageCounter" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Account_Plan" Association="uacModel.Store.FK_Account_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Account_User_aspnet_Users" Association="uacModel.Store.FK_Account_User_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Account_User" EntitySet="Account_User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Field_Module" Association="uacModel.Store.FK_Field_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Field" EntitySet="Field" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FieldMetadata_Field" Association="uacModel.Store.FK_FieldMetadata_Field">
+            <End Role="Field" EntitySet="Field" />
+            <End Role="FieldMetadata" EntitySet="FieldMetadata" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Module_Account" Association="uacModel.Store.FK_Module_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Module_aspnet_Users" Association="uacModel.Store.FK_Module_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleField_FieldDataType" Association="uacModel.Store.FK_ModuleField_FieldDataType">
+            <End Role="FieldDataType" EntitySet="FieldDataType" />
+            <End Role="Field" EntitySet="Field" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleRow_Field_Field" Association="uacModel.Store.FK_ModuleRow_Field_Field">
+            <End Role="Field" EntitySet="Field" />
+            <End Role="Cell" EntitySet="Cell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleRow_Field_ModuleRow" Association="uacModel.Store.FK_ModuleRow_Field_ModuleRow">
+            <End Role="Row" EntitySet="Row" />
+            <End Role="Cell" EntitySet="Cell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Account" Association="uacModel.Store.FK_Payment_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Row_Module" Association="uacModel.Store.FK_Row_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Row" EntitySet="Row" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsageCounter_Module" Association="uacModel.Store.FK_UsageCounter_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="UsageCounter" EntitySet="UsageCounter" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SubdomainName" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="256" />
+          <Property Name="SiteUrl" Type="nvarchar" MaxLength="256" />
+          <Property Name="PlanId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Account_User">
+          <Key>
+            <PropertyRef Name="AccountId" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cell">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RowId" Type="int" Nullable="false" />
+          <Property Name="FieldId" Type="int" Nullable="false" />
+          <Property Name="Data" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="FieldName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="IsRequired" Type="bit" Nullable="false" />
+          <Property Name="IsReadOnly" Type="bit" Nullable="false" />
+          <Property Name="DataTypeId" Type="int" Nullable="false" />
+          <Property Name="ShowInListMode" Type="bit" Nullable="false" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="SortIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="FieldDataType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="FriendlyName" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="FieldMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MetadataKey" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="FieldId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModuleType" Type="int" Nullable="false" />
+          <Property Name="AccountId" Type="int" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="ReferenceDate" Type="datetime" Nullable="false" />
+          <Property Name="Paid" Type="bit" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="TransactStatus" Type="nvarchar" MaxLength="256" />
+          <Property Name="Amount" Type="money" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="SpaceLimit" Type="int" Nullable="false" />
+          <Property Name="BandwidthLimit" Type="int" Nullable="false" />
+          <Property Name="APIRequestLimit" Type="int" Nullable="false" />
+          <Property Name="ModuleLimit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Row">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="SortIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="UsageCounter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ModuleId" Type="int" Nullable="false" />
+          <Property Name="Day" Type="tinyint" Nullable="false" />
+          <Property Name="Month" Type="tinyint" Nullable="false" />
+          <Property Name="Year" Type="smallint" Nullable="false" />
+          <Property Name="RequestCount" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Account_Plan">
+          <End Role="Plan" Type="uacModel.Store.Plan" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Account" Type="uacModel.Store.Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Plan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="PlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Account_User_aspnet_Users">
+          <End Role="aspnet_Users" Type="uacModel.Store.aspnet_Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Account_User" Type="uacModel.Store.Account_User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Account_User">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Field_Module">
+          <End Role="Module" Type="uacModel.Store.Module" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Field" Type="uacModel.Store.Field" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Field">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FieldMetadata_Field">
+          <End Role="Field" Type="uacModel.Store.Field" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FieldMetadata" Type="uacModel.Store.FieldMetadata" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FieldMetadata">
+              <PropertyRef Name="FieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Module_Account">
+          <End Role="Account" Type="uacModel.Store.Account" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Module" Type="uacModel.Store.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Module_aspnet_Users">
+          <End Role="aspnet_Users" Type="uacModel.Store.aspnet_Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Module" Type="uacModel.Store.Module" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Module">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleField_FieldDataType">
+          <End Role="FieldDataType" Type="uacModel.Store.FieldDataType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Field" Type="uacModel.Store.Field" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FieldDataType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Field">
+              <PropertyRef Name="DataTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleRow_Field_Field">
+          <End Role="Field" Type="uacModel.Store.Field" Multiplicity="1" />
+          <End Role="Cell" Type="uacModel.Store.Cell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Field">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cell">
+              <PropertyRef Name="FieldId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ModuleRow_Field_ModuleRow">
+          <End Role="Row" Type="uacModel.Store.Row" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cell" Type="uacModel.Store.Cell" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Row">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Cell">
+              <PropertyRef Name="RowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_Account">
+          <End Role="Account" Type="uacModel.Store.Account" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Payment" Type="uacModel.Store.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Row_Module">
+          <End Role="Module" Type="uacModel.Store.Module" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Row" Type="uacModel.Store.Row" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Row">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsageCounter_Module">
+          <End Role="Module" Type="uacModel.Store.Module" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsageCounter" Type="uacModel.Store.UsageCounter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Module">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsageCounter">
+              <PropertyRef Name="ModuleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetRowFieldBytes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="doverModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DoverEntities" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+          <EntitySet Name="Field" EntityType="doverModel.Field" />
+          <EntitySet Name="FieldDataType" EntityType="doverModel.FieldDataType" />
+          <EntitySet Name="Row" EntityType="doverModel.Row" />
+          <AssociationSet Name="FK_ModuleField_FieldDataType" Association="doverModel.FK_ModuleField_FieldDataType">
+            <End Role="FieldDataType" EntitySet="FieldDataType" />
+            <End Role="Field" EntitySet="Field" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Row_Module1" Association="doverModel.FK_Row_Module1">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Row" EntitySet="Row" />
+          </AssociationSet>
+          <EntitySet Name="Module" EntityType="doverModel.Module" />
+          <AssociationSet Name="FK_Field_Module" Association="doverModel.FK_Field_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="Field" EntitySet="Field" />
+          </AssociationSet>
+          <EntitySet Name="FieldMetadata" EntityType="doverModel.FieldMetadata" />
+          <AssociationSet Name="FK_FieldMetadata_Field" Association="doverModel.FK_FieldMetadata_Field">
+            <End Role="Field" EntitySet="Field" />
+            <End Role="FieldMetadata" EntitySet="FieldMetadata" />
+          </AssociationSet>
+          <FunctionImport Name="GetRowFieldBytes" ReturnType="Collection(doverModel.GetRowFieldBytes_Result)" />
+          <EntitySet Name="Account" EntityType="doverModel.Account" />
+          <EntitySet Name="User" EntityType="doverModel.User" />
+          <AssociationSet Name="FK_Module_aspnet_Users" Association="doverModel.FK_Module_aspnet_Users">
+            <End Role="aspnet_Users" EntitySet="User" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <AssociationSet Name="Accountaspnet_Users" Association="doverModel.Accountaspnet_Users">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="aspnet_Users" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Module_Account" Association="doverModel.FK_Module_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Module" EntitySet="Module" />
+          </AssociationSet>
+          <EntitySet Name="UsageCounter" EntityType="doverModel.UsageCounter" />
+          <AssociationSet Name="FK_UsageCounter_Module" Association="doverModel.FK_UsageCounter_Module">
+            <End Role="Module" EntitySet="Module" />
+            <End Role="UsageCounter" EntitySet="UsageCounter" />
+          </AssociationSet>
+          <EntitySet Name="Cell" EntityType="doverModel.Cell" />
+          <AssociationSet Name="FK_ModuleRow_Field_Field" Association="doverModel.FK_ModuleRow_Field_Field">
+            <End Role="Field" EntitySet="Field" />
+            <End Role="Cell" EntitySet="Cell" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ModuleRow_Field_ModuleRow" Association="doverModel.FK_ModuleRow_Field_ModuleRow">
+            <End Role="Row" EntitySet="Row" />
+            <End Role="Cell" EntitySet="Cell" />
+          </AssociationSet>
+          <EntitySet Name="Payment" EntityType="doverModel.Payment" />
+          <EntitySet Name="Plan" EntityType="doverModel.Plan" />
+          <AssociationSet Name="FK_Account_Plan" Association="doverModel.FK_Account_Plan">
+            <End Role="Plan" EntitySet="Plan" />
+            <End Role="Account" EntitySet="Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_Account" Association="doverModel.FK_Payment_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Field">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FieldDataType" Relationship="doverModel.FK_ModuleField_FieldDataType" FromRole="Field" ToRole="FieldDataType" />
+          <Property Type="Boolean" Name="ShowInListMode" Nullable="false" />
+          <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FieldName" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsRequired" Nullable="false" />
+          <Property Type="Boolean" Name="IsReadOnly" Nullable="false" />
+          <NavigationProperty Name="Module" Relationship="doverModel.FK_Field_Module" FromRole="Field" ToRole="Module" />
+          <NavigationProperty Name="Metadata" Relationship="doverModel.FK_FieldMetadata_Field" FromRole="Field" ToRole="FieldMetadata" />
+          <NavigationProperty Name="Cells" Relationship="doverModel.FK_ModuleRow_Field_Field" FromRole="Field" ToRole="Cell" />
+          <Property Type="Int32" Name="SortIndex" />
+          </EntityType>
+        <EntityType Name="FieldDataType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Fields" Relationship="doverModel.FK_ModuleField_FieldDataType" FromRole="FieldDataType" ToRole="Field" />
+          <Property Type="String" Name="FriendlyName" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Module">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="ModuleName" Type="String" Nullable="false" />
+          <Property Name="ModuleType" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <NavigationProperty Name="Rows" Relationship="doverModel.FK_Row_Module1" FromRole="Module" ToRole="Row" />
+          <NavigationProperty Name="Fields" Relationship="doverModel.FK_Field_Module" FromRole="Module" ToRole="Field" />
+          <NavigationProperty Name="User" Relationship="doverModel.FK_Module_aspnet_Users" FromRole="Module" ToRole="aspnet_Users" />
+          <NavigationProperty Name="Account" Relationship="doverModel.FK_Module_Account" FromRole="Module" ToRole="Account" />
+          <NavigationProperty Name="UsageCounters" Relationship="doverModel.FK_UsageCounter_Module" FromRole="Module" ToRole="UsageCounter" />
+          </EntityType>
+        <EntityType Name="Row">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Module" Relationship="doverModel.FK_Row_Module1" FromRole="Row" ToRole="Module" />
+          <Property Type="Int32" Name="SortIndex" Nullable="true" />
+          <NavigationProperty Name="Cells" Relationship="doverModel.FK_ModuleRow_Field_ModuleRow" FromRole="Row" ToRole="Cell" /></EntityType>
+        <Association Name="FK_ModuleField_FieldDataType">
+          <End Role="FieldDataType" Type="doverModel.FieldDataType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Field" Type="doverModel.Field" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Row_Module1">
+          <End Type="doverModel.Module" Role="Module" Multiplicity="1" />
+          <End Type="doverModel.Row" Role="Row" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Field_Module">
+          <End Type="doverModel.Module" Role="Module" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="doverModel.Field" Role="Field" Multiplicity="*" />
+        </Association>
+        <EntityType Name="FieldMetadata">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Key" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Value" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Field" Relationship="doverModel.FK_FieldMetadata_Field" FromRole="FieldMetadata" ToRole="Field" />
+        </EntityType>
+        <Association Name="FK_FieldMetadata_Field">
+          <End Type="doverModel.Field" Role="Field" Multiplicity="1" />
+          <End Type="doverModel.FieldMetadata" Role="FieldMetadata" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="GetRowFieldBytes_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Binary" Name="Data" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Account" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SubdomainName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="doverModel.Accountaspnet_Users" FromRole="Account" ToRole="aspnet_Users" />
+          <Property Type="String" Name="Logo" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SiteUrl" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Modules" Relationship="doverModel.FK_Module_Account" FromRole="Account" ToRole="Module" />
+          <NavigationProperty Name="Plan" Relationship="doverModel.FK_Account_Plan" FromRole="Account" ToRole="Plan" />
+          <NavigationProperty Name="Payments" Relationship="doverModel.FK_Payment_Account" FromRole="Account" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Guid" Name="ApplicationId" Nullable="false" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LoweredUserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MobileAlias" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsAnonymous" Nullable="false" />
+          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" />
+          <NavigationProperty Name="Modules" Relationship="doverModel.FK_Module_aspnet_Users" FromRole="aspnet_Users" ToRole="Module" />
+          <NavigationProperty Name="Accounts" Relationship="doverModel.Accountaspnet_Users" FromRole="aspnet_Users" ToRole="Account" />
+        </EntityType>
+        <Association Name="FK_Module_aspnet_Users">
+          <End Type="doverModel.User" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="doverModel.Module" Role="Module" Multiplicity="*" />
+        </Association>
+        <Association Name="Accountaspnet_Users">
+          <End Type="doverModel.Account" Role="Account" Multiplicity="*" />
+          <End Type="doverModel.User" Role="aspnet_Users" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Module_Account">
+          <End Type="doverModel.Account" Role="Account" Multiplicity="0..1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="doverModel.Module" Role="Module" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UsageCounter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="Byte" Name="Month" Nullable="false" />
+          <Property Type="Int16" Name="Year" Nullable="false" />
+          <Property Type="Int32" Name="RequestCount" Nullable="false" />
+          <NavigationProperty Name="Module" Relationship="doverModel.FK_UsageCounter_Module" FromRole="UsageCounter" ToRole="Module" />
+          <Property Type="Byte" Name="Day" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UsageCounter_Module">
+          <End Type="doverModel.Module" Role="Module" Multiplicity="1" />
+          <End Type="doverModel.UsageCounter" Role="UsageCounter" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Cell">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Data" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Field" Relationship="doverModel.FK_ModuleRow_Field_Field" FromRole="Cell" ToRole="Field" />
+          <NavigationProperty Name="Row" Relationship="doverModel.FK_ModuleRow_Field_ModuleRow" FromRole="Cell" ToRole="Row" />
+        </EntityType>
+        <Association Name="FK_ModuleRow_Field_Field">
+          <End Type="doverModel.Field" Role="Field" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="doverModel.Cell" Role="Cell" Multiplicity="*" >
+          </End>
+        </Association>
+        <Association Name="FK_ModuleRow_Field_ModuleRow">
+          <End Type="doverModel.Row" Role="Row" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="doverModel.Cell" Role="Cell" Multiplicity="*" >
+          </End>
+        </Association>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="DateTime" Name="ReferenceDate" Nullable="false" />
+          <Property Type="Boolean" Name="Paid" Nullable="false" />
+          <Property Type="DateTime" Name="PaymentDate" />
+          <Property Type="String" Name="TransactStatus" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Amount" Precision="19" Scale="4" />
+          <NavigationProperty Name="Account" Relationship="doverModel.FK_Payment_Account" FromRole="Payment" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Plan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="SpaceLimit" Nullable="false" />
+          <Property Type="Int32" Name="BandwidthLimit" Nullable="false" />
+          <Property Type="Int32" Name="APIRequestLimit" Nullable="false" />
+          <Property Type="Int32" Name="ModuleLimit" Nullable="false" />
+          <NavigationProperty Name="Accounts" Relationship="doverModel.FK_Account_Plan" FromRole="Plan" ToRole="Account" />
+        </EntityType>
+        <Association Name="FK_Account_Plan">
+          <End Type="doverModel.Plan" Role="Plan" Multiplicity="1" />
+          <End Type="doverModel.Account" Role="Account" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Payment_Account">
+          <End Type="doverModel.Account" Role="Account" Multiplicity="1" />
+          <End Type="doverModel.Payment" Role="Payment" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="uacModelStoreContainer" CdmEntityContainer="DoverEntities">
+          <EntitySetMapping Name="Field">
+            <EntityTypeMapping TypeName="IsTypeOf(doverModel.Field)">
+              <MappingFragment StoreEntitySet="Field">
+                <ScalarProperty Name="SortIndex" ColumnName="SortIndex" />
+                <ScalarProperty Name="IsReadOnly" ColumnName="IsReadOnly" />
+                <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+                <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="ShowInListMode" ColumnName="ShowInListMode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Row">
+            <EntityTypeMapping TypeName="IsTypeOf(doverModel.Row)">
+              <MappingFragment StoreEntitySet="Row">
+                <ScalarProperty Name="SortIndex" ColumnName="SortIndex" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_ModuleField_FieldDataType" TypeName="doverModel.FK_ModuleField_FieldDataType" StoreEntitySet="Field">
+            <EndProperty Name="FieldDataType">
+              <ScalarProperty Name="ID" ColumnName="DataTypeId" />
+            </EndProperty>
+            <EndProperty Name="Field">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="FieldDataType">
+            <EntityTypeMapping TypeName="IsTypeOf(doverModel.FieldDataType)">
+              <MappingFragment StoreEntitySet="FieldDataType">
+                <ScalarProperty Name="FriendlyName" ColumnName="FriendlyName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Module">
+            <EntityTypeMapping TypeName="IsTypeOf(doverModel.Module)" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+              <MappingFragment StoreEntitySet="Module">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ModuleType" ColumnName="ModuleType" />
+                <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Row_Module1" TypeName="doverModel.FK_Row_Module1" StoreEntitySet="Row">
+            <EndProperty Name="Module">
+              <ScalarProperty Name="Id" ColumnName="ModuleId" />
+            </EndProperty>
+            <EndProperty Name="Row">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Field_Module" TypeName="doverModel.FK_Field_Module" StoreEntitySet="Field">
+            <EndProperty Name="Field">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Module">
+              <ScalarProperty Name="Id" ColumnName="ModuleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="FieldMetadata">
+            <EntityTypeMapping TypeName="doverModel.FieldMetadata">
+              <MappingFragment StoreEntitySet="FieldMetadata">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="MetadataKey" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_FieldMetadata_Field" TypeName="doverModel.FK_FieldMetadata_Field" StoreEntitySet="FieldMetadata">
+            <EndProperty Name="FieldMetadata">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Field">
+              <ScalarProperty Name="ID" ColumnName="FieldId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="GetRowFieldBytes" FunctionName="uacModel.Store.GetRowFieldBytes" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="doverModel.GetRowFieldBytes_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="doverModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="SiteUrl" ColumnName="SiteUrl" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="SubdomainName" ColumnName="SubdomainName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="doverModel.User">
+              <MappingFragment StoreEntitySet="aspnet_Users">
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Module_aspnet_Users" TypeName="doverModel.FK_Module_aspnet_Users" StoreEntitySet="Module">
+            <EndProperty Name="Module">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Accountaspnet_Users" TypeName="doverModel.Accountaspnet_Users" StoreEntitySet="Account_User">
+            <EndProperty Name="Account">
+              <ScalarProperty Name="Id" ColumnName="AccountId" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Module_Account" TypeName="doverModel.FK_Module_Account" StoreEntitySet="Module">
+            <EndProperty Name="Module">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Account">
+              <ScalarProperty Name="Id" ColumnName="AccountId" />
+            </EndProperty>
+            <Condition ColumnName="AccountId" IsNull="false" />
+          </AssociationSetMapping>
+          <EntitySetMapping Name="UsageCounter">
+            <EntityTypeMapping TypeName="doverModel.UsageCounter">
+              <MappingFragment StoreEntitySet="UsageCounter">
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="RequestCount" ColumnName="RequestCount" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_UsageCounter_Module" TypeName="doverModel.FK_UsageCounter_Module" StoreEntitySet="UsageCounter">
+            <EndProperty Name="UsageCounter">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Module">
+              <ScalarProperty Name="Id" ColumnName="ModuleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Cell">
+            <EntityTypeMapping TypeName="doverModel.Cell">
+              <MappingFragment StoreEntitySet="Cell">
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_ModuleRow_Field_Field" TypeName="doverModel.FK_ModuleRow_Field_Field" StoreEntitySet="Cell">
+            <EndProperty Name="Cell">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Field">
+              <ScalarProperty Name="ID" ColumnName="FieldId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ModuleRow_Field_ModuleRow" TypeName="doverModel.FK_ModuleRow_Field_ModuleRow" StoreEntitySet="Cell">
+            <EndProperty Name="Cell">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="Row">
+              <ScalarProperty Name="ID" ColumnName="RowId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Payment">
+            <EntityTypeMapping TypeName="doverModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="TransactStatus" ColumnName="TransactStatus" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="ReferenceDate" ColumnName="ReferenceDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plan">
+            <EntityTypeMapping TypeName="doverModel.Plan">
+              <MappingFragment StoreEntitySet="Plan">
+                <ScalarProperty Name="ModuleLimit" ColumnName="ModuleLimit" />
+                <ScalarProperty Name="APIRequestLimit" ColumnName="APIRequestLimit" />
+                <ScalarProperty Name="BandwidthLimit" ColumnName="BandwidthLimit" />
+                <ScalarProperty Name="SpaceLimit" ColumnName="SpaceLimit" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Account_Plan" TypeName="doverModel.FK_Account_Plan" StoreEntitySet="Account">
+            <EndProperty Name="Account">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Plan">
+              <ScalarProperty Name="Id" ColumnName="PlanId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Payment_Account" TypeName="doverModel.FK_Payment_Account" StoreEntitySet="Payment">
+            <EndProperty Name="Payment">
+              <ScalarProperty Name="Id" ColumnName="Id" />
+            </EndProperty>
+            <EndProperty Name="Account">
+              <ScalarProperty Name="Id" ColumnName="AccountId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="UAC" xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+        <EntityTypeShape EntityType="doverModel.Field" Width="1.5" PointX="5.75" PointY="5.5" Height="3.1340950520833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="doverModel.FieldDataType" Width="1.5" PointX="8.25" PointY="4.625" Height="1.787985026041667" IsExpanded="true" />
+        <EntityTypeShape EntityType="doverModel.Module" Width="1.5" PointX="2.875" PointY="5.5" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="doverModel.Row" Width="1.5" PointX="3" PointY="9.25" Height="1.7879850260416657" IsExpanded="true" />
+        <AssociationConnector Association="doverModel.FK_ModuleField_FieldDataType" ManuallyRouted="false">
+          <ConnectorPoint PointX="8.25" PointY="5.9564925130208337" />
+          <ConnectorPoint PointX="7.25" PointY="5.9564925130208337" />
+          </AssociationConnector>
+        <AssociationConnector Association="doverModel.FK_Row_Module1" >
+          <ConnectorPoint PointX="3.6875" PointY="8.2494921875" />
+          <ConnectorPoint PointX="3.6875" PointY="9.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="doverModel.FK_Field_Module" >
+          <ConnectorPoint PointX="4.375" PointY="6.87474609375" />
+          <ConnectorPoint PointX="5.75" PointY="6.87474609375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="doverModel.FieldMetadata" Width="1.5" PointX="8.25" PointY="6.75" Height="1.7879850260416674" />
+        <AssociationConnector Association="doverModel.FK_FieldMetadata_Field" >
+          <ConnectorPoint PointX="7.25" PointY="7.6439925130208337" />
+          <ConnectorPoint PointX="8.25" PointY="7.6439925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="doverModel.Account" Width="1.5" PointX="0.5" PointY="3.625" Height="2.7494921875" />
+        <EntityTypeShape EntityType="doverModel.User" Width="1.5" PointX="0.5" PointY="7" Height="2.7494921874999996" />
+        <AssociationConnector Association="doverModel.FK_Module_aspnet_Users" >
+          <ConnectorPoint PointX="2" PointY="7.62474609375" />
+          <ConnectorPoint PointX="2.875" PointY="7.62474609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="doverModel.Accountaspnet_Users">
+          <ConnectorPoint PointX="1.25" PointY="6.3744921875" />
+          <ConnectorPoint PointX="1.25" PointY="7" />
+        </AssociationConnector>
+        <AssociationConnector Association="doverModel.FK_Module_Account" >
+          <ConnectorPoint PointX="2" PointY="4.7321501116071421" />
+          <ConnectorPoint PointX="3.3478670267153192" PointY="4.7321501116071421" />
+          <ConnectorPoint PointX="3.3478670267153192" PointY="5.5" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="doverModel.UsageCounter" Width="1.5" PointX="5.75" PointY="2.875" Height="2.172587890625" />
+        <AssociationConnector Association="doverModel.FK_UsageCounter_Module" >
+          <ConnectorPoint PointX="3.7886919158468157" PointY="5.5" />
+          <ConnectorPoint PointX="3.7886919158468157" PointY="4.3277698284646737" />
+          <ConnectorPoint PointX="5.75" PointY="4.3277698284646737" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="doverModel.Cell" Width="1.5" PointX="5.75" PointY="9.25" Height="1.7879850260416674" />
+        <AssociationConnector Association="doverModel.FK_ModuleRow_Field_Field" >
+          <ConnectorPoint PointX="6.5" PointY="8.6340950520833317" />
+          <ConnectorPoint PointX="6.5" PointY="9.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="doverModel.FK_ModuleRow_Field_ModuleRow" >
+          <ConnectorPoint PointX="4.5" PointY="10.143992513020834" />
+          <ConnectorPoint PointX="5.75" PointY="10.143992513020834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="doverModel.Payment" Width="1.5" PointX="3" PointY="0.5" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="doverModel.Plan" Width="1.5" PointX="0.5" PointY="0.5" Height="2.5571907552083317" />
+        <AssociationConnector Association="doverModel.FK_Account_Plan" >
+          <ConnectorPoint PointX="1.25" PointY="3.0571907552083317" />
+          <ConnectorPoint PointX="1.25" PointY="3.625" />
+        </AssociationConnector>
+        <AssociationConnector Association="doverModel.FK_Payment_Account" >
+          <ConnectorPoint PointX="2" PointY="4.1676519626524389" />
+          <ConnectorPoint PointX="3.5640896553324253" PointY="4.1676519626524389" />
+          <ConnectorPoint PointX="3.5640896553324253" PointY="2.8648893229166674" />
+        </AssociationConnector>
+        </Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

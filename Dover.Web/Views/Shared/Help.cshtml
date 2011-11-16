@@ -1,0 +1,128 @@
+﻿@using Microsoft.Web.Mvc;
+@using Br.Com.Quavio.Tools.Web.Mvc;
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>@View.Title</title>
+	<meta charset="utf-8">
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:bold' rel='stylesheet' type='text/css' />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+	@Html.Script("~/Scripts/help.js")
+	@Html.Css("~/Content/Help/help.css")
+	@(new HtmlString(Html.FavIcon("~/Content/Images/favicon.png")))	
+</head>
+<body class="guide">
+	<div id="topNav">
+		<div class="wrapper">
+			<strong>Mais em <a href="http://Dover/">Dover:</a> </strong><a href="http://Dover/recursos.html">
+				Recursos</a> | <a href="http://Dover/precos.html">Preços</a> | <a href="http://Dover/cadastro.html">
+					Cadastro</a>
+		</div>
+	</div>
+	<div id="header">
+		<div class="header_wrapper">
+			<div class="wrapper clearfix">
+				<h1>
+					<a href="index.html" title="Guides">Dover Help</a></h1>
+				<p class="hide">
+					<a href="#mainCol">Skip navigation</a>.</p>
+				<ul class="nav">
+					<li><a href="index.html">Home</a></li>
+					<li class="index"><a href="index.html" id="guidesMenu">
+						Índice</a>
+						<div id="guides" class="clearfix" style="display: none;">
+							<hr />
+							<dl class="L">
+								<dt>Começe aqui</dt>
+								<dd>@Html.ActionLink("Iniciando com o Dover", "Getting_Started")</dd>
+								<dt>Templates</dt>
+								<dd>
+									<a href="templates_creating.html">Como criar templates</a></dd>
+								<dd>
+									<a href="templates_uploading.html">Como realizar <em>upload</em> de templates</a></dd>
+								<dt>Contatos</dt>
+								<dd>
+									<a href="contacts_new.html">Cadastro de contatos</a></dd>
+								<dd>
+									<a href="contacts_status.html">Status dos contatos</a></dd>
+								<dd>
+									<a href="contacts_custom_fields.html">Campos personalizados</a></dd>
+								<dd>
+									<a href="contacts_remove.html">Remoção de contatos</a></dd>
+								<dd>
+									<a href="lists_management.html">Gerenciamento de listas</a></dd>
+								<dd>
+									<a href="segmentation.html">O que é segmentação e como usar</a></dd>
+								<dt>Configuração</dt>
+								<dd>
+									<a href="config_spf.html">Configurando o <span class="caps">SPF</span></a></dd>
+								<dd>
+									<a href="payment.html">Realização de pagamentos</a></dd>
+								<dd>
+									<a href="config_links.html">Links personalizados nas mensanges</a></dd>
+								<dd>
+									<a href="config_config.html">Configurações de conta</a></dd>
+								<dd>
+									<a href="users.html">Adicione usuários</a></dd>
+							</dl>
+							<dl class="R">
+								<dt>Importação</dt>
+								<dd>
+									<a href="import_quick.html">Importando rápido</a></dd>
+								<!-- <dd><a href="import_gmail.html">Importando do GMAIL</a></dd> -->
+								<dd>
+									<a href="import_spreadsheet.html">Importando de planilhas</a></dd>
+								<dt>Campanhas e mensagens</dt>
+								<dd>
+									<a href="what_is_a_campaign.html">O que é uma campanha</a></dd>
+								<dd>
+									<a href="message_new.html">Criando uma campanha</a></dd>
+								<dd>
+									<a href="message_edit.html">Editando as suas mensagens</a></dd>
+								<dd>
+									<a href="message_verify.html">Conferindo o conteúdo das mensagens</a></dd>
+								<dd>
+									<a href="message_test.html">Testando suas mensagens</a></dd>
+								<dd>
+									<a href="message_send.html">Como enviar suas mensagens</a></dd>
+								<dd>
+									<a href="reports.html">Acesse os relatórios</a></dd>
+								<dt>Integração</dt>
+								<dd>
+									<a href="integration_form.html">Formulários na sua página</a></dd>
+								<dd>
+									<a href="integration_rest.html"><span class="caps">API</span> <span class="caps">REST</span></a></dd>
+								<dd>
+									<a href="integration_rails.html">Integrando com Ruby on Rails</a></dd>
+								<dd>
+									<a href="integration_php.html">Integrando com <span class="caps">PHP</span></a></dd>
+								<dd>
+									<a href="integration_spree.html">Integrando com Spree</a></dd>
+								<dd>
+									<a href="analytics.html">Integrando com o Google Analytics</a></dd>
+								<dt>Artigos úteis</dt>
+								<dd>
+									<a href="glossary.html">Glossário de termos de email marketing</a></dd>
+								<dd>
+									<a href="go_unsubscribe.html">Tela de descadastro</a></dd>
+							</dl>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	@RenderBody()
+
+	<hr class="hide" />
+	<div id="footer">
+		<div class="wrapper">
+			<p>
+				Este trabalho é licenciado como <a href="http://creativecommons.org/licenses/by-sa/3.0/">
+					Creative Commons Attribution-Share Alike 3.0</a></p>
+		</div>
+	</div>
+</body>
+</html>

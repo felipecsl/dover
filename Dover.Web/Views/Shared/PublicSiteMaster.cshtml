@@ -1,0 +1,47 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@using Br.Com.Quavio.Tools.Web.Mvc;
+@using Microsoft.Web.Mvc;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@View.Title</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="O Dover é uma plataforma completa para gestão de conteúdo na web." />
+	<meta name="keywords" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	@(new HtmlString(Html.FavIcon("~/Content/Images/favicon.png")))	
+	@Html.Css("~/Content/PublicSite.css")
+</head>
+<body>
+    <div class="top">
+		<div class="body ctr w">
+			<div class="fl">
+				<span>Já possui uma conta? Faça seu</span>
+				<span class="login u roundedborder">Log In</span>
+			</div>
+			<ul class="fr">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">Quem Somos</a></li>
+				<li><a href="#">Blog</a></li>
+				<li><a href="#">Fórum</a></li>
+				<li><a href="#">Suporte</a></li>
+				<li><a href="#">Contato</a></li>
+				<li class="feedback roundedborder"><a href="#">Feedback</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="body ctr">
+		<div class="menu oa">
+			@Html.Image("~/Content/Images/logo.png", new { Class = "fl" })
+			<ul class="fr">
+				<li><a href="#">O que é</a></li>
+				<li><a href="#">Quem Utiliza</a></li>
+				<li><a href="#">Quanto Custa</a></li>
+			</ul>
+		</div>
+		@RenderBody()
+	</div>
+</body>
+</html>

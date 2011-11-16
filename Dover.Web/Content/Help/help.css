@@ -1,0 +1,168 @@
+﻿/* from http://meyerweb.com/eric/tools/css/reset/ *//* v1.0 | 20080212 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,a, 
+abbr, acronym, address, big, cite, code,del, 
+dfn, em, font, img, ins, kbd, q, s, samp,small, 
+strike, strong, sub, sup, tt, var,b, u, i, 
+center,dl, dt, dd, ol, ul, li,fieldset, form, 
+label, legend,table, caption, tbody, tfoot, 
+thead, tr, th, td {	margin: 0;	padding: 0;	border: 0;	outline: 0;	font-size: 100%;	vertical-align: baseline;	background: transparent;}
+body { line-height: 1;}
+ol, ul { list-style: none;}
+blockquote, q {	quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {	content: '';	content: none;}
+/* remember to define focus styles! */:focus {	outline: 0;}
+/* remember to highlight inserts somehow! */ins {	text-decoration: none;}
+del { text-decoration: line-through;}
+/* tables still need 'cellspacing="0"' in the markup */ table {	border-collapse: collapse;	border-spacing: 0;}
+
+.left {float: left; margin-right: 1em;}
+.right {float: right; margin-left: 1em;}
+.small {font-size: smaller;}
+.large {font-size: larger;}
+.hide {display: none;}
+
+li ul, li ol { margin:0 1.5em; }
+ul, ol { margin: 0 1.5em 1.5em 1.5em; }
+ul { list-style-type: disc; }
+ol { list-style-type: decimal; }
+dl { margin: 0 0 1.5em 0; }
+dl dt { font-weight: bold; }
+dd { margin-left: 1.5em;}
+
+pre,code { margin: 1.5em 0; white-space: pre; overflow: auto; }
+pre,code,tt, samp { font-size: 14px; font-family: menlo, monaco, 'andale mono', 'lucida console', 'courier new', monospace; line-height: 1.5; }
+samp { background: #ddd; color: #444; font-size: 14px; margin: 0 0.25em; padding: 0.25em 0.5em; border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; white-space:nowrap;}
+abbr, acronym { border-bottom: 1px dotted #666; }
+address { margin: 0 0 1.5em; font-style: italic; }
+del { color:#666; }
+blockquote { margin: 1.5em; color: #666; font-style: italic; }
+strong { font-weight: bold; }
+em, dfn { font-style: italic; }
+dfn { font-weight: bold; }
+sup, sub { line-height: 0; }
+p {margin: 0 0 1.5em;}
+label { font-weight: bold; }
+fieldset { padding:1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc; }
+legend { font-weight: bold; font-size:1.2em; }
+input.text, input.title,
+textarea, select { margin:0.5em 0; border:1px solid #bbb; }
+table { margin: 0 0 1.5em; border: 1px solid #AAA; background: #FFF; border-collapse: collapse; }
+table th, table td { padding: 0.25em 1em; border: 1px solid #AAA; border-collapse: collapse; }
+table th { border-bottom: 1px solid #AAA; border-right:1px solid #AAA; background: #CCC; font-weight: bold; padding: 0.5em 1em; text-shadow:#fff 0 1px 0;}
+
+/* Structure and Layout --------------------------------------- */
+body { text-align: center; font-family: 'Droid Sans', Helvetica, Arial, sans-serif; font-size: 87.5%; line-height: 1.5em; background-color: #D5E9F6; color: #222; }
+div.wrapper { text-align: left; margin: 0 auto; width: 900px; }
+#topNav { padding: 1em 0; color: #555; background-color: #000; border-bottom: 1px solid #333; font-size: 14px;}
+#topNav a { color: #7bcbbf; font-weight: 500 }
+#header { background: transparent url(../Images/Help/texture_background.gif); color: #FFF; padding: 0; position: relative; z-index: 99; border-bottom: 5px solid #7bcbbf; }
+.header_wrapper { background: transparent no-repeat fixed -200px 50px; padding: 25px 0; position: relative; z-index: 99; }
+/*
+#feature { color: #333; padding: 0.5em 0 1.5em; background-color: #D5E9F6; }
+*/
+
+#feature { color: #333; padding: 0.5em 0 1.5em; background-color: #d6faf5; }
+/*#feature { color: #333; padding: 0.5em 0 1.5em; background-color: #DDF3FF; }*/
+#container { background: #fff; color: #333; padding: 0.5em 0 1.5em 0; border-bottom: #D5E9F6 1px solid; }
+#mainCol { width: 630px; }
+#mainCol img{ border:1px solid #CCC; -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.3); -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.3); box-shadow: 0 0 1em rgba(0, 0, 0, 0.3); }
+#mainCol table img { border: 0 none; -moz-box-shadow: 0 0 0 transparent; -webkit-box-shadow: 0 0 0 transparent; box-shadow: 0 0 0 transparent; vertical-align:middle; }
+#subCol { position: absolute; z-index: 0; top: 0; right: 0; background: #FFF; padding: 13px; width: 220px; font-size: 0.9285em; line-height: 1.3846em; border-radius: 1em; -webkit-border-radius: 1em; -moz-border-radius: 1em;}
+
+#extraCol {display: none;}
+#footer { padding: 2em 0; border-top: #FFF 1px solid; background: #000000; color: #fff; }
+#feature .wrapper { width: 630px; padding-right: 263px; position: relative; z-index: 0;}
+
+/* Links --------------------------------------- */
+a, a:link, a:visited { color: #162F54; text-decoration: underline; }
+#mainCol a, #subCol a, #feature a {color: #437d80;}
+#mainCol a:hover, #subCol a:hover, #feature a:hover {color: #001526;}
+#footer a { color: #5D93C4; text-decoration: underline; }
+
+/* Navigation --------------------------------------- */
+.nav {margin: 0; padding: 0;}
+.nav li {display: inline; list-style: none;}
+#header .nav { float: right; margin-top: 20px; font-size: 18px; }
+#header .nav li {margin:0; float:left; display:block;  padding: 0.5em 1.5em; }
+#header .nav a {color: #FFF; text-decoration: none;}
+#header .nav a:hover {text-decoration: underline;}
+#header .nav .index { display:block; border-radius: 1em; -webkit-border-radius: 1em; -moz-border-radius: 1em; background: #447f81; position: relative; }
+
+/*#header .nav .index a { background: #0080ce url(../Images/Help/nav_arrow.gif) no-repeat right top; padding-right: 1em; position: relative; z-index: 15; padding-bottom: 0.125em; }*/
+
+#header .nav .index a { border-radius: 1em; -webkit-border-radius: 1em; -moz-border-radius: 1em; background: #447f81 url(../Images/Help/nav_arrow.png) no-repeat right top; padding-right: 1em; position: relative; z-index: 15; padding-bottom: 0.125em; }
+
+#header .nav .index:hover a, #header .nav .index a:hover {background-position: right -81px;}
+#guides { width: 27em; display: block; background: #448081; border-radius: 1em; -webkit-border-radius: 1em; -moz-border-radius: 1em; -webkit-box-shadow: 0.25em 0.25em 1em rgba(0,0,0,0.25); -moz-box-shadow: rgba(0,0,0,0.25) 0.25em 0.25em 1em; color: #001526; padding: 1.5em 2em; position: absolute; z-index: 10; top: -0.25em; right: 0; padding-top: 2em; }
+#guides dt, #guides dd { font-weight: normal; font-size: 0.722em; margin: 0; padding: 0; }
+#guides dt { padding:0; margin: 0.5em 0 0; font-weight: bold; text-shadow: #4DB6B8 0 1px 0; color:#07292A;}
+#guides a {color: #FFF; background: none !important;}
+#guides .L, #guides .R {float: left; width: 50%; margin: 0; padding: 0;}
+#guides .R {float: right;}
+#guides hr { display: block; border: 0 none; border-top: 1px solid #07292A; border-bottom: 1px solid #4DB6B8;}
+hr { display: block; border: 0 none; border-top: 1px solid #ddd; border-bottom: 1px solid #fff;}
+
+/* Headings--------------------------------------- */
+h1, h2, h3, h4, h5 { font-family: 'Droid Sans', arial, serif; }
+h1 { font-size: 2.5em; line-height: 1em; margin: 0.6em 0 .2em; font-weight: bold; }
+h2 { font-size: 2.1428em; line-height: 1em; margin: 0.7em 0 .2333em; font-weight: bold;  text-shadow: #fff 0 1px 0;}
+h3 { color: #444; font-size: 1.7142em; line-height: 1.286em; margin: 0.875em 0 0.2916em; font-weight: bold; }
+h4 { font-size: 1.2857em; line-height: 1.2em; margin: 1.6667em 0 .3887em; font-weight: bold; }
+h5 { font-size: 1em; line-height: 1.5em; margin: 1em 0 .5em; font-weight: bold; border-bottom:1px dotted silver;}
+h6 { font-size: 1em; line-height: 1.5em; margin: 1em 0 .5em; font-weight: normal; }
+.section { padding-bottom: 0.25em; border-bottom: 1px solid #999; }
+
+/* Content --------------------------------------- */
+.pic { margin: 0 2em 2em 0; }
+#topNav strong {color: #888; margin-right: 0.5em;}
+#topNav strong a {color: #FFF; font-weight:900;}
+#header h1 { float: left; background: url(../Images/Help/logo.png) no-repeat; width: 259px; text-indent: -9999em; margin: 0; padding: 0; }
+#header h1 a { text-decoration: none; display: block; height: 80px; }
+#feature p { font-size: 1.2857em; margin-bottom: 0.75em; }
+#feature ul {margin-left: 0;}
+#feature ul li { list-style: none; background: url(../Images/Help/right_16.png) no-repeat left 0.5em; padding: 0.5em 1.75em 0.5em 1.75em; font-size: 1.1428em; font-weight: bold; }
+#mainCol dd, #subCol dd { padding: 0.25em 0 1em; border-bottom: 0 none; margin-bottom: 1em; margin-left: 0; padding-left: 0; }
+#mainCol dt, #subCol dt { font-size: 1.2857em; padding: 0.125em 0 0.25em 0; margin-bottom: 0; }
+
+#subCol .chapters {color: #001526;}
+#subCol .chapters a {font-weight: bold;}
+#subCol .chapters ul a {font-weight: normal;}
+#subCol .chapters li {margin-bottom: 0.75em;}
+#subCol h3.chapter {margin-top: 0.25em;}
+#subCol h3.chapter img {vertical-align: text-bottom;}
+
+#subCol .chapters ul {margin-left: 0; margin-top: 0.5em;}
+#subCol .chapters ul li { list-style: none; padding: 0 0 0 1em; background: url(../Images/Help/bullet.gif) no-repeat left 0.45em; margin-left: 0; font-size: 1em; font-weight: normal; }
+tt { font-family: monaco, "Bitstream Vera Sans Mono", "Courier New", courier, monospace; }
+
+div.code_container {  min-height: 48px; background: #EEE url(../Images/Help/tab_grey.gif) no-repeat left top; border: 0 none;padding: 0.25em 1em 0.5em 48px; }
+code { font-family: monaco, "Bitstream Vera Sans Mono", "Courier New", courier, monospace; border: none; margin: 0.25em 0 1.5em 0; display: block; }
+.note { min-height: 48px; background: #fff9d8 url(../Images/Help/tab_note.gif) no-repeat left top; border: none; padding: 1em 1em 0.25em 48px; margin: 0.25em 0 1.5em 0; }
+.info { min-height: 48px; background: #d5e9f6 url(../Images/Help/tab_info.gif) no-repeat left top; border: none; padding: 1em 1em 0.25em 48px; margin: 0.25em 0 1.5em 0; }
+.note tt, .info tt {border:none; background: none; padding: 0;}
+
+.ticket, dd.ticket { background: #fff9d8 url(../Images/Help/tab_yellow.gif) no-repeat left top; border: none; padding: 1.25em 1em 1.25em 48px; margin-left: 0; margin-top: 0.25em; }
+.warning, dd.warning { min-height: 48px; background: #f9d9d8 url(../Images/Help/tab_red.gif) no-repeat left top; border: none; padding: 1.25em 1.25em 1.25em 48px; margin-left: 0; margin-top: 0.25em; }
+
+
+#mainCol ul li { list-style:none; background: url(../Images/Help/grey_bullet.gif) no-repeat left 0.5em; padding-left: 1em; margin-left: 0; }
+.note p samp, .warning p samp, .info p samp { background: #333; color: #fff; font-size: 13px; margin: 0.25em; padding: 0.25em 0.5em; border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; white-space:nowrap;}
+#subCol .content { font-size: 0.7857em; line-height: 1.5em; }
+#subCol .content li { font-weight: normal; background: none; padding: 0 0 1em; font-size: 1.1667em; }
+
+/* Clearing
+--------------------------------------- */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.clearfix {display: inline-block;}
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+.clear { clear:both; }
+/* Same bottom margin for special boxes than for regular paragraphs, this way
+intermediate whitespace looks uniform. */
+div.code_container, div.important, div.caution, div.warning, div.note, div.info { margin-bottom: 1.5em; }
+div.important p, div.caution p, div.warning p, div.note p, div.info p { margin-bottom: 1em; }
+
+
+span.wrong { color:#CC3333; }
+span.correct { color:#8CC63F; }

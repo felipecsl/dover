@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="https://web708.discountasp.net:8172/MsDeploy.axd" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="dovercms.com/" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="True" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="DiscountASP web deploy" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="dovercmscom" savePWD="True" userPWD="AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAy3F8GypzF0C7TVzgFQ+bogAAAAACAAAAAAAQZgAAAAEAACAAAABvyaFVUZ7fjupmp6gpfIypeYuJeMas1EbSa2pI2e8M8AAAAAAOgAAAAAIAACAAAABbAJMm/MhHk3bE7lmadzPFQoCQkDPIrkaXJLViOxXRLhAAAAD9xtOl2w1mSmBqdyeeoY2dQAAAAOrZQLayyIRKxEHoDRL/5aNzA3I5ZmtCvK9eV4UBngyyHFRVcZp0577lHD/bzpIkRJ9AmbHbObk6GEvgbJHCLaI=" SelectedForPublish="True" />
+</publishData>
